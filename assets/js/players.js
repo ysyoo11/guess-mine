@@ -5,7 +5,7 @@ import {
   enableCanvas,
   resetCanvas,
 } from "./paint";
-import { disableChat } from "./chat";
+import { disableChat, enableChat } from "./chat";
 
 const board = document.getElementById("jsPlayerBoard");
 const notifs = document.getElementById("jsNotifs");
@@ -26,13 +26,14 @@ const setNotifs = (text) => {
 
 export const handleGameStarting = () => setNotifs("Game will start soon.");
 
+export const handlePlayerUpdate = ({ sockets }) => addPlayers(sockets);
+
 export const handleGameStarted = () => {
   setNotifs("");
   disableCanvas();
   hideControls();
+  enableChat();
 };
-
-export const handlePlayerUpdate = ({ sockets }) => addPlayers(sockets);
 
 export const handleLeaderNotif = ({ word }) => {
   enableCanvas();
