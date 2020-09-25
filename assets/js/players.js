@@ -6,6 +6,8 @@ import {
   resetCanvas,
 } from "./paint";
 import { disableChat, enableChat } from "./chat";
+import { startTimer, stopTimer } from "./timer";
+// import { disableTimer } from "./timer";
 
 const board = document.getElementById("jsPlayerBoard");
 const notifs = document.getElementById("jsNotifs");
@@ -24,12 +26,15 @@ const setNotifs = (text) => {
   notifs.innerText = text;
 };
 
-export const handleGameStarting = () => setNotifs("Game will start soon.");
+export const handleGameStarting = () => {
+  setNotifs("Game will start soon.");
+};
 
 export const handlePlayerUpdate = ({ sockets }) => addPlayers(sockets);
 
 export const handleGameStarted = () => {
   setNotifs("");
+  startTimer();
   disableCanvas();
   hideControls();
   enableChat();
@@ -44,6 +49,7 @@ export const handleLeaderNotif = ({ word }) => {
 
 export const handleGameEnded = () => {
   setNotifs("Game ended.");
+  stopTimer();
   disableCanvas();
   hideControls();
   resetCanvas();

@@ -13,6 +13,15 @@
   }
   .main {
     margin-right: 200px;
+    .notif {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 20px;
+      .notif__timer i {
+        margin-right: 6px;
+      }
+    }
     #jsCanvas {
       width: 700px;
       height: 700px;
